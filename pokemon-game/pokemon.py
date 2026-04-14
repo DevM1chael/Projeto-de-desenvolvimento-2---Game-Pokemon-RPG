@@ -1,5 +1,7 @@
+import random
+
 class Pokemon:
-    def init(self,especie, level=1, nome=None):
+    def __init__(self, especie, level=random.randint(1, 100), nome=None):
         self.especie = especie 
         self.level = level
 
@@ -8,7 +10,7 @@ class Pokemon:
         else:
             self.nome = especie
 
-    def str(self):
+    def __str__(self):
         return "{} ({})".format(self.nome, self.level)
 
     def atacar(self, pokemon):
@@ -30,8 +32,57 @@ class PokemonFogo(Pokemon):
 class PokemonAgua(Pokemon):
     tipo = "Agua"
 
-    def atacar(self,pokemon):
-        print("{} lançou um jato de agua {}".format(self,pokemon))
+    def atacar(self, pokemon):
+        print("{} lançou um jato de agua {}".format(self, pokemon))
+
+
+class PokemonPlanta(Pokemon):
+    tipo = "planta"
+
+    def atacar(self, pokemon):
+        print("{} lançou folhas cortantes em {}".format(self, pokemon))
+
+
+class PokemonPsiquico(Pokemon):
+    tipo = "psiquico"
+
+    def atacar(self, pokemon):
+        print("{} usou confusão em {}".format(self, pokemon))
+
+
+class PokemonDragao(Pokemon):
+    tipo = "dragao"
+
+    def atacar(self, pokemon):
+        print("{} usou sopro do dragão em {}".format(self, pokemon))
+
+
+class PokemonFada(Pokemon):
+    tipo = "fada"
+
+    def atacar(self, pokemon):
+        print("{} usou brilho mágico em {}".format(self, pokemon))
+
+
+class PokemonGelo(Pokemon):
+    tipo = "gelo"
+
+    def atacar(self, pokemon):
+        print("{} usou raio de gelo em {}".format(self, pokemon))
+
+
+class PokemonInseto(Pokemon):
+    tipo = "inseto"
+
+    def atacar(self, pokemon):
+        print("{} usou picada em {}".format(self, pokemon))
+
+
+class PokemonLutador(Pokemon):
+    tipo = "lutador"
+
+    def atacar(self, pokemon):
+        print("{} usou soco dinâmico em {}".format(self, pokemon))
 
 
 meu_pokemon  =  PokemonFogo("charmander")

@@ -1,4 +1,23 @@
+import random
 from pokemon import *
+
+NOMES = [
+    "João", "Isabela", "Lorena", "Francisco", "Ricardo", "Diego",
+    "Patrícia", "Marcelo", "Gustavo", "Gerônimo", "Gary"
+]
+
+POKEMONS = [
+    PokemonFogo("Charmander"),
+    PokemonAgua("Squirtle"),
+    PokemonPlanta("Bulbasaur"),
+    PokemonEletrico("Pikachu"),
+    PokemonPsiquico("Mewtwo"),
+    PokemonDragao("Dragonite"),
+    PokemonFada("Clefairy"),
+    PokemonGelo("Lapras"),
+    PokemonInseto("Scyther"),
+    PokemonLutador("Machamp"),
+]
 
 class Pessoa:
     def __init__(self, nome=None, pokemons=[]):
@@ -6,7 +25,7 @@ class Pessoa:
             self.nome = nome
 
         else:
-            self.none = "Anônimo"   
+            self.nome = "Anônimo"   
         
         self.pokemons = pokemons
     
@@ -26,14 +45,16 @@ class Player(Pessoa):
     def capturar(self,pokemon):
         self.pokemons.append(pokemon)
         print("{} capturou  {}".format(self, pokemon))
+
 class Inimigo(Pessoa):
     tipo = "inimigo"
 
+    def __init__(self, nome=None, pokemons=[]):
+        if not pokemons:
+            for i in range(random.randint(1,6)):
+                pokemons.append(random.choice(POKEMONS))
+        
+        super().__init__(nome=random.choice(NOMES), pokemons=pokemons)
 
-eu = Player("felipe")
-
-pokemon_selvagem  = PokemonFogo("charmander")
-print("antes de capturar")
-eu.mostrar_pokemons()
-eu.capturar(pokemon_selvagem)
-eu.mostrar_pokemons()
+meu_inimigo = Inimigo()
+meu_inimigo.mostrar_pokemons()
