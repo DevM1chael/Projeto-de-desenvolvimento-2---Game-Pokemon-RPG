@@ -36,6 +36,9 @@ def escolher_pokemon_inicial(player):
 player = Player("Michael")
 player.capturar(PokemonFogo("Charmander", level=5))
 
+# Mostra o dinheiro do jogador
+player.mostrar_dinheiro()
+
 # 2. Escolhe o inicial
 escolher_pokemon_inicial(player)
 

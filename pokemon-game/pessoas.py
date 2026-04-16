@@ -15,7 +15,7 @@ POKEMONS = [
 
 #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 class Pessoa:
-    def __init__(self, nome=None, pokemons=[]):
+    def __init__(self, nome=None, pokemons=[], dinheiro=100):
         if nome:
             self.nome = nome
 
@@ -23,6 +23,8 @@ class Pessoa:
             self.nome = "Anônimo"   
         
         self.pokemons = pokemons
+
+        self.dinheiro = dinheiro
     
     def __str__(self):
         return self.nome
@@ -50,6 +52,16 @@ class Pessoa:
 
 #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+    def mostrar_dinheiro(self):
+        print("Você tem ${} de dinheiro!".format(self.dinheiro))
+
+    def ganhar_dinheiro(self, quantidade: int):
+        self.dinheiro += quantidade
+        print("Você ganhou ${}! ".format(quantidade))
+        self.mostrar_dinheiro()
+
+#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
     def batalhar(self, pessoa):
         print("{} desafiou {} para uma batalha!".format(self, pessoa))
     
@@ -64,6 +76,7 @@ class Pessoa:
                 vitoria = pokemon.atacar(pokemon_inimigo)
                 if vitoria:
                     print("{} ganhou a batalha".format(self))
+                    self.ganhar_dinheiro(pokemon_inimigo.level * 100)
                     break
 
                 vitoria_inimiga = pokemon_inimigo.atacar(pokemon)
