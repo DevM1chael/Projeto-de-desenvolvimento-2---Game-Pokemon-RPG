@@ -1,4 +1,5 @@
 from pokemon import *
+import random
 
 NOMES = [
     "João", "Isabela", "Lorena", "Francisco", "Ricardo", "Diego",
@@ -96,7 +97,6 @@ class Player(Pessoa):
         self.pokemons.append(pokemon)
         print("{} capturou  {}".format(self, pokemon))
 
-#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
     def escolher_pokemon(self):
         self.mostrar_pokemons()
@@ -114,6 +114,24 @@ class Player(Pessoa):
                     print("Escolha inválida!")
         else:
             print("ERRO: Você não tem nenhum pokemon!")
+    
+    def explorar(self):
+        if random.random() <= 0.3:
+            pokemon = random.choice(POKEMONS)
+            print("Você encontrou um {} selvagem!".format(pokemon))
+
+            escolha = input("Deseja capturar pokemon? (s/n): ")
+            if escolha == "s":
+                if random.random() >= 0.5:
+                    self.capturar(pokemon)
+                else:
+                    print("{} escapou!".format(pokemon))
+            else:
+                print("Ok, boa viagem!")
+
+        else:
+            print("Você não encontrou nenhum pokemon!")
+            return None
 
 #||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 

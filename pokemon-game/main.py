@@ -33,18 +33,44 @@ def escolher_pokemon_inicial(player):
 # --- Programa Principal ---
 
 # 1. Cria o jogador
-player = Player("Michael")
-player.capturar(PokemonFogo("Charmander", level=5))
 
-# Mostra o dinheiro do jogador
-player.mostrar_dinheiro()
+if __name__ == "__main__":
+    print('____________________________')
+    print("Bem-vindo ao mundo Pokemon!")
+    nome = input("Digite seu nome: ")
+    player = Player(nome)
+    print('____________________________')
+    print("Olá {}! esse é um mundo habitado por pokemons, a partir de agora sua missão é se tornar um mestre dos pokemons".format(nome))
+    print("Capture o máximo de pokemons que conseguir e lute com seus inimigos")
+    player.mostrar_dinheiro()
 
-# 2. Escolhe o inicial
-escolher_pokemon_inicial(player)
+    
+    if player.pokemons:
+        print("Já vi que você tem alguns pokemons")
+        player.mostrar_pokemons()
+    else:
+        print("Você não tem nenhum pokemon! Por tanto precisa escolher um para começar:")
+        escolher_pokemon_inicial(player)
+    
+    print("Pronto, agora que você já possui um pokemon, enfrente seu arqui-inimigo Gary!")
+    gary = Inimigo(nome="Gary", pokemons=[PokemonAgua("Squarttle", level=1)])
+    player.batalhar(gary)
 
-# 3. Inimigo
-inimigo = Inimigo(nome="Gary", pokemons=[PokemonFogo("Charmander", level=5)])
-
-# 4. Batalha
-print("\n--- INÍCIO DA BATALHA ---")
-player.batalhar(inimigo)
+    while True:
+        print('____________________________')
+        print("O que você deseja fazer?")
+        print("1 - Explorar pelo mundo a fora")
+        print("2 - Batalhar com um inimigo")
+        print("0 - Sair do jogo")
+        escolha = input("Escolha uma opção: ")
+        if escolha == "1":
+            player.explorar()
+        elif escolha == "2":
+            player.batalhar(Inimigo())
+        elif escolha == "0":
+            print("Obrigado por jogar!")
+            print('Fechando o jogo...')
+            print('____________________________')
+            break
+        else:
+            print("Escolha inválida!")
