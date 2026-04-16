@@ -34,9 +34,14 @@ def escolher_pokemon_inicial(player):
 
 # 1. Cria o jogador
 player = Player("Michael")
+player.capturar(PokemonFogo("Charmander", level=5))
 
 # 2. Escolhe o inicial
 escolher_pokemon_inicial(player)
 
-# 3. Mostra os pokemons do jogador
-player.mostrar_pokemons()
+# 3. Inimigo
+inimigo = Inimigo(nome="Gary", pokemons=[PokemonFogo("Charmander", level=5)])
+
+# 4. Batalha
+print("\n--- INÍCIO DA BATALHA ---")
+player.batalhar(inimigo)

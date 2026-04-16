@@ -17,9 +17,11 @@ class Pokemon:
     def __str__(self):
         return "{} ({})".format(self.nome, self.level)
     
+#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||    
     def atacar(self, pokemon):
         print("{} atacou {}!".format(self.especie, pokemon))
 
+#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 class PokemonEletrico(Pokemon):
     tipo = "eletrico"
@@ -27,11 +29,15 @@ class PokemonEletrico(Pokemon):
     def atacar(self,pokemon):
         print("{} deu um raio do trovão em {}".format(self,pokemon))
 
+#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 class PokemonFogo(Pokemon):
     tipo = "fogo"
 
     def atacar(self,pokemon):
         print("{} deu uma bola de fogo na cabeça {}".format(self,pokemon))
+
+#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 class PokemonAgua(Pokemon):
     tipo = "agua"
@@ -39,8 +45,12 @@ class PokemonAgua(Pokemon):
     def atacar(self,pokemon):
         print("{} lançou um jato de agua {}".format(self,pokemon))
 
+#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 class PokemonPlanta(Pokemon):
     tipo = "planta"
 
     def atacar(self,pokemon):
         print("{} lançou folhas de navalha em {}".format(self,pokemon))
+
+#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
